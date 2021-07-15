@@ -1,0 +1,10 @@
+sudo: required #super user level permission
+language: generic
+services:
+  - docker # install docker on its container
+
+before_install:
+  - docker build -t docker-react -f Dockerfile.dev . #recommended to use your dockerid/
+
+script: #commands needed to run
+  - docker run -e CI=true docker-react npm run test
